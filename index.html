@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Singlish</title>
+
+    <link rel="stylesheet" href="css/jquery.textcomplete.css">
+	 <script type="text/javascript" src="js/jquery-2.1.3.js"></script>
+	 <script type="text/javascript" src="js/jquery.textcomplete.js"></script>
+    <script type="text/javascript" src="js/sinhaladict.js"></script>
+    <script type="text/javascript" src="js/ucsc.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+alert(1);
+	$('textarea').keypress(function(e){
+			uni_word = convertText('');
+		}).textcomplete([{
+	   	match: /(^|\S*)([^\u0000-\u007f]{2,}|\w{2,})$/,
+	    	search: function (term, callback) {
+	        callback($.map(SinhalaDict, function (word) {
+	            return word.indexOf(uni_word) === 0 ? word : null; //=== 0
+	        }));
+	    	},
+	    	replace: function (word) {
+	         return word + ' ';
+	   }
+	}]);
+
+	$('#sk_enable').click(function(){
+      if($(this).prop("checked") == true){
+          sk_enable
+      }
+      else{
+          sk_enable
+      }
+	});
+
+});
+</script>
+
+</head>
+<body>
+   <label> <input type="checkbox" id="sk_enable" /> Enable Singlish Translating </label>  
+   <br/>
+	<textarea cols="100" rows="10" ></textarea>
+
+</body>
+</html>
